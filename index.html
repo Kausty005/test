@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday, Vedanti! 🎂</title>
+    <meta name="description" content="A special birthday surprise page for Vedanti, filled with love, wishes, and celebration!" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <section class="gate" data-gate aria-label="Birthday unlock puzzle">
+      <div class="gate-sparkles" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <div class="gate-card">
+        <p class="kicker">🎂 Before the birthday magic opens 🎂</p>
+        <h1 class="gate-title">make a tiny wish</h1>
+        <p class="gate-copy">
+          Close your eyes, Vedanti. Take a little breath and blow the candle to unlock your surprise!
+        </p>
+
+        <div class="wish-candle-scene" data-candle-scene>
+          <div class="wish-cloud" aria-hidden="true"></div>
+          <div class="wish-candle" aria-label="Birthday candle">
+            <span class="wish-flame" data-wish-flame></span>
+            <span class="wish-smoke"></span>
+            <span class="wish-wick"></span>
+            <span class="wish-stick"></span>
+          </div>
+        </div>
+
+        <p class="gate-status" data-gate-status>Tap once to blow it softly. ✨</p>
+        <button class="button primary blow-button" type="button" data-blow-candle>🌬️ Blow the candle</button>
+      </div>
+    </section>
+
+    <div class="sparkle-field" aria-hidden="true"></div>
+    <div class="cursor-heart" aria-hidden="true">&hearts;</div>
+
+    <header class="hero" id="top">
+      <nav class="topbar" aria-label="Birthday sections">
+        <a href="#wish">💌 Wish</a>
+        <a href="#messages">💕 Messages</a>
+      </nav>
+
+      <section class="hero-inner">
+        <div class="hero-copy">
+          <p class="kicker">🎉 A special celebration for a wonderful soul 🎉</p>
+          <h1>Happy Birthday, <span data-birthday-name>Vedanti</span>!</h1>
+          <p class="hero-note">
+            Today is YOUR day, Vedanti! 🎈 The world got a little brighter the day you were born,
+            and every year it just keeps getting more sparkly because of you. Let the confetti fly! 🎊
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#wish">💌 Open your wish</a>
+            <button class="button ghost" type="button" data-confetti>🎊 More confetti</button>
+          </div>
+        </div>
+
+        <div class="cake-stage" aria-label="Animated birthday cake">
+          <div class="moon"></div>
+          <div class="balloon balloon-one"></div>
+          <div class="balloon balloon-two"></div>
+          <div class="balloon balloon-three"></div>
+          <div class="cake">
+            <div class="candle">
+              <span class="flame"></span>
+            </div>
+            <div class="frosting"></div>
+            <div class="cake-top"></div>
+            <div class="cake-bottom"></div>
+            <div class="plate"></div>
+          </div>
+          <p class="stage-caption">🎂 make a wish & scroll down 🎂</p>
+        </div>
+      </section>
+      <a class="scroll-cue" href="#wish" aria-label="Scroll to birthday wish">v</a>
+    </header>
+
+    <main>
+      <section class="wish-section" id="wish">
+        <div class="section-heading">
+          <p class="eyebrow">💕 A little letter for you</p>
+          <h2>For the girl who makes every moment magical ✨</h2>
+        </div>
+        <div class="letter">
+          <p>
+            Dear Vedanti, 🌸<br><br>
+            You deserve the kind of year that feels like your favorite song on repeat — full of warmth,
+            laughter, and the most beautiful surprises. May every single day bring you closer to your dreams
+            and fill your heart with joy that overflows!
+          </p>
+          <p>
+            May your birthday be wrapped in love, sprinkled with happiness, and topped with everything
+            that makes your soul dance. You are a ray of sunshine, and the world is so lucky to have you! ☀️
+          </p>
+          <p>
+            Here's to more adventures, more belly laughs, more memories that make you smile even years later,
+            and a life as extraordinary as you are. Happy Birthday, superstar! 🌟
+          </p>
+          <div class="quote-strip" aria-label="Birthday quotes">
+            <span>🌟 "She is a whole celebration." 🌟</span>
+            <span>💖 "Pretty soul, loud laugh, golden heart." 💖</span>
+            <span>✨ "Today gets extra sparkle because of Vedanti." ✨</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="memory-ribbon" aria-label="Floating birthday notes">
+        <div class="note-card tilt-left">🏆 best laugh award</div>
+        <div class="note-card">👑 main character energy</div>
+        <div class="note-card tilt-right">🎂 cutest birthday queen</div>
+        <div class="note-card">🌈 sunshine in human form</div>
+      </section>
+
+      <section class="cheer-banner">
+        <div class="cheer-inner">
+          <p class="cheer-line">🎈 Wishing you endless happiness, Vedanti! 🎈</p>
+          <p class="cheer-line">🎁 May all your dreams come true this year! 🎁</p>
+          <p class="cheer-line">💫 Keep shining, keep smiling, keep being YOU! 💫</p>
+        </div>
+      </section>
+
+
+      <section class="messages-section" id="messages">
+        <div class="section-heading">
+          <p class="eyebrow">💕 People who love you</p>
+          <h2>Tap a name to open their birthday message 💌</h2>
+        </div>
+        <div class="people-grid" data-people-grid></div>
+      </section>
+    </main>
+
+    <div class="modal" data-modal hidden>
+      <div class="modal-backdrop" data-close-modal></div>
+      <article class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button class="modal-close" type="button" data-close-modal aria-label="Close video">&times;</button>
+        <p class="eyebrow">Birthday message</p>
+        <h3 id="modal-title" data-modal-name>Someone special</h3>
+        <video data-modal-video controls playsinline preload="metadata"></video>
+        <p data-modal-note></p>
+      </article>
+    </div>
+
+    <template id="person-template">
+      <button class="person-card" type="button">
+        <span class="avatar"></span>
+        <span class="person-name"></span>
+        <span class="person-relation"></span>
+      </button>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>

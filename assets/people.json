@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Mom",
+    "relation": "first best friend",
+    "video": "assets/videos/mom.mp4",
+    "note": "A birthday message from Mom.",
+    "color": "#ffd4bd"
+  },
+  {
+    "name": "Bestie",
+    "relation": "partner in chaos",
+    "video": "assets/videos/bestie.mp4",
+    "note": "A birthday message from her bestie.",
+    "color": "#bde7ff"
+  },
+  {
+    "name": "Brother",
+    "relation": "professional teaser",
+    "video": "assets/videos/brother.mp4",
+    "note": "A birthday message from Brother.",
+    "color": "#b9f3da"
+  },
+  {
+    "name": "Cousin",
+    "relation": "secret keeper",
+    "video": "assets/videos/cousin.mp4",
+    "note": "A birthday message from Cousin.",
+    "color": "#ffe98a"
+  }
+]
