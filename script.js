@@ -1,63 +1,5 @@
 const CONFIG = {
-  birthdayName: "Vedanti",
-  fallbackPeople: [
-    {
-      name: "Person 1",
-      relation: "Your first surprise",
-      video: "assets/videos/1.mp4",
-      note: "Add video at assets/videos/1.mp4",
-      color: "#ffd4bd"
-    },
-    {
-      name: "Person 2",
-      relation: "Your second surprise",
-      video: "assets/videos/2.mp4",
-      note: "Add video at assets/videos/2.mp4",
-      color: "#bde7ff"
-    },
-    {
-      name: "Person 3",
-      relation: "Your third surprise",
-      video: "assets/videos/3.mp4",
-      note: "Add video at assets/videos/3.mp4",
-      color: "#b9f3da"
-    },
-    {
-      name: "Person 4",
-      relation: "Your fourth surprise",
-      video: "assets/videos/4.mp4",
-      note: "Add video at assets/videos/4.mp4",
-      color: "#ffe98a"
-    },
-    {
-      name: "Person 5",
-      relation: "Your fifth surprise",
-      video: "assets/videos/5.mp4",
-      note: "Add video at assets/videos/5.mp4",
-      color: "#f3c4fb"
-    },
-    {
-      name: "Person 6",
-      relation: "Your sixth surprise",
-      video: "assets/videos/6.mp4",
-      note: "Add video at assets/videos/6.mp4",
-      color: "#c4f0c5"
-    },
-    {
-      name: "Person 7",
-      relation: "Your seventh surprise",
-      video: "assets/videos/7.mp4",
-      note: "Add video at assets/videos/7.mp4",
-      color: "#ffccd5"
-    },
-    {
-      name: "Person 8",
-      relation: "Your eighth surprise",
-      video: "assets/videos/8.mp4",
-      note: "Add video at assets/videos/8.mp4",
-      color: "#a2d2ff"
-    }
-  ]
+  birthdayName: "Vedanti"
 };
 
 const sparkleField = document.querySelector(".sparkle-field");
@@ -72,7 +14,6 @@ const peopleGrid = document.querySelector("[data-people-grid]");
 const modal = document.querySelector("[data-modal]");
 const modalName = document.querySelector("[data-modal-name]");
 const modalVideo = document.querySelector("[data-modal-video]");
-const modalNote = document.querySelector("[data-modal-note]");
 
 let birthdayRevealed = false;
 
@@ -151,14 +92,8 @@ blowButton.addEventListener("click", blowCandle);
 /* ---- People / messages ---- */
 const surpriseEmojis = ["🎁", "🎀", "🌟", "💝", "🎊", "✨", "🦋", "🌈"];
 
-async function loadPeople() {
-  try {
-    const response = await fetch("assets/people.json", { cache: "no-store" });
-    if (!response.ok) throw new Error("No people file yet");
-    return await response.json();
-  } catch {
-    return CONFIG.fallbackPeople;
-  }
+function loadPeople() {
+  return PEOPLE || [];
 }
 
 function renderPeople(people) {
@@ -170,14 +105,12 @@ function renderPeople(people) {
     const surpriseNum = index + 1;
     const emoji = surpriseEmojis[index % surpriseEmojis.length];
 
-    /* Card front shows "Surprise N" — relation is hidden */
+    /* Card front shows "Surprise N" */
     node.querySelector(".person-name").textContent = `${emoji} Surprise ${surpriseNum}`;
-    node.querySelector(".person-relation").textContent = "Tap to reveal";
     node.querySelector(".avatar").style.setProperty("--card-color", person.color || "#ffd4bd");
 
     /* Store the real data */
     node.dataset.realName = person.name;
-    node.dataset.realRelation = person.relation;
     node.dataset.revealed = "false";
 
     node.addEventListener("click", () => handleCardClick(node, person));
@@ -186,37 +119,20 @@ function renderPeople(people) {
 }
 
 function handleCardClick(card, person) {
-  /* First click → reveal the name & relation */
+  /* Mark as revealed visually */
   if (card.dataset.revealed === "false") {
     card.dataset.revealed = "true";
     card.classList.add("is-revealed");
-
-    const nameEl = card.querySelector(".person-name");
-    const relEl = card.querySelector(".person-relation");
-
-    /* Brief "flip" animation then swap content */
-    card.classList.add("is-flipping");
-    setTimeout(() => {
-      nameEl.textContent = person.name;
-      relEl.textContent = person.relation;
-      card.classList.remove("is-flipping");
-    }, 300);
-
-    burstConfetti(18);
-    return;
+    card.querySelector(".person-name").textContent = person.name;
   }
 
-  /* Second click → open the video modal */
+  /* Open video directly */
   openModal(person);
 }
 
 function openModal(person) {
   modalName.textContent = person.name;
   modalVideo.src = person.video;
-  modalNote.textContent = person.note || `${person.name} sent this just for you.`;
-  modalVideo.onerror = () => {
-    modalNote.textContent = `Video not added yet. Put it at ${person.video}, then refresh the page.`;
-  };
   modal.hidden = false;
   document.body.style.overflow = "hidden";
   modalVideo.focus();
@@ -240,4 +156,4 @@ document.addEventListener("keydown", (event) => {
 });
 
 
-loadPeople().then(renderPeople);
+renderPeople(loadPeople());

@@ -1,30 +1,58 @@
 [
   {
-    "name": "Mom",
-    "relation": "first best friend",
-    "video": "assets/videos/mom.mp4",
+    "name": "didi",
+    "relation": "",
+    "video": "assets/videos/tej.mp4",
     "note": "A birthday message from Mom.",
     "color": "#ffd4bd"
   },
   {
-    "name": "Bestie",
+    "name": "kalyani",
     "relation": "partner in chaos",
-    "video": "assets/videos/bestie.mp4",
+    "video": "assets/videos/kalyani.mp4",
     "note": "A birthday message from her bestie.",
     "color": "#bde7ff"
   },
   {
-    "name": "Brother",
-    "relation": "professional teaser",
-    "video": "assets/videos/brother.mp4",
+    "name": "ram dada",
+    "relation": "",
+    "video": "assets/videos/ram.mp4",
     "note": "A birthday message from Brother.",
     "color": "#b9f3da"
   },
   {
-    "name": "Cousin",
+    "name": "kaustubh",
     "relation": "secret keeper",
-    "video": "assets/videos/cousin.mp4",
+    "video": "assets/videos/koss.mp4",
     "note": "A birthday message from Cousin.",
     "color": "#ffe98a"
+  },
+  {
+    "name": "Person 5",
+    "relation": "Your fifth surprise",
+    "video": "assets/videos/5.mp4",
+    "note": "Add video at assets/videos/5.mp4",
+    "color": "#f3c4fb"
+  },
+  {
+    "name": "Person 6",
+    "relation": "Your sixth surprise",
+    "video": "assets/videos/6.mp4",
+    "note": "Add video at assets/videos/6.mp4",
+    "color": "#c4f0c5"
+  },
+  {
+    "name": "Person 7",
+    "relation": "Your seventh surprise",
+    "video": "assets/videos/7.mp4",
+    "note": "Add video at assets/videos/7.mp4",
+    "color": "#ffccd5"
+  },
+  {
+    "name": "Person 8",
+    "relation": "Your eighth surprise",
+    "video": "assets/videos/8.mp4",
+    "note": "Add video at assets/videos/8.mp4",
+    "color": "#a2d2ff"
   }
 ]
