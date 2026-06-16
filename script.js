@@ -2,25 +2,60 @@ const CONFIG = {
   birthdayName: "Vedanti",
   fallbackPeople: [
     {
-      name: "Mom",
-      relation: "first best friend",
-      video: "assets/videos/mom.mp4",
-      note: "Add Mom's birthday video at assets/videos/mom.mp4",
+      name: "Person 1",
+      relation: "Your first surprise",
+      video: "assets/videos/1.mp4",
+      note: "Add video at assets/videos/1.mp4",
       color: "#ffd4bd"
     },
     {
-      name: "Bestie",
-      relation: "partner in chaos",
-      video: "assets/videos/bestie.mp4",
-      note: "Add Bestie's birthday video at assets/videos/bestie.mp4",
+      name: "Person 2",
+      relation: "Your second surprise",
+      video: "assets/videos/2.mp4",
+      note: "Add video at assets/videos/2.mp4",
       color: "#bde7ff"
     },
     {
-      name: "Brother",
-      relation: "professional teaser",
-      video: "assets/videos/brother.mp4",
-      note: "Add Brother's birthday video at assets/videos/brother.mp4",
+      name: "Person 3",
+      relation: "Your third surprise",
+      video: "assets/videos/3.mp4",
+      note: "Add video at assets/videos/3.mp4",
       color: "#b9f3da"
+    },
+    {
+      name: "Person 4",
+      relation: "Your fourth surprise",
+      video: "assets/videos/4.mp4",
+      note: "Add video at assets/videos/4.mp4",
+      color: "#ffe98a"
+    },
+    {
+      name: "Person 5",
+      relation: "Your fifth surprise",
+      video: "assets/videos/5.mp4",
+      note: "Add video at assets/videos/5.mp4",
+      color: "#f3c4fb"
+    },
+    {
+      name: "Person 6",
+      relation: "Your sixth surprise",
+      video: "assets/videos/6.mp4",
+      note: "Add video at assets/videos/6.mp4",
+      color: "#c4f0c5"
+    },
+    {
+      name: "Person 7",
+      relation: "Your seventh surprise",
+      video: "assets/videos/7.mp4",
+      note: "Add video at assets/videos/7.mp4",
+      color: "#ffccd5"
+    },
+    {
+      name: "Person 8",
+      relation: "Your eighth surprise",
+      video: "assets/videos/8.mp4",
+      note: "Add video at assets/videos/8.mp4",
+      color: "#a2d2ff"
     }
   ]
 };
@@ -114,6 +149,8 @@ blowButton.addEventListener("click", blowCandle);
 
 
 /* ---- People / messages ---- */
+const surpriseEmojis = ["🎁", "🎀", "🌟", "💝", "🎊", "✨", "🦋", "🌈"];
+
 async function loadPeople() {
   try {
     const response = await fetch("assets/people.json", { cache: "no-store" });
@@ -128,14 +165,49 @@ function renderPeople(people) {
   const template = document.querySelector("#person-template");
   peopleGrid.innerHTML = "";
 
-  people.forEach((person) => {
+  people.forEach((person, index) => {
     const node = template.content.firstElementChild.cloneNode(true);
-    node.querySelector(".person-name").textContent = person.name;
-    node.querySelector(".person-relation").textContent = person.relation;
+    const surpriseNum = index + 1;
+    const emoji = surpriseEmojis[index % surpriseEmojis.length];
+
+    /* Card front shows "Surprise N" — relation is hidden */
+    node.querySelector(".person-name").textContent = `${emoji} Surprise ${surpriseNum}`;
+    node.querySelector(".person-relation").textContent = "Tap to reveal";
     node.querySelector(".avatar").style.setProperty("--card-color", person.color || "#ffd4bd");
-    node.addEventListener("click", () => openModal(person));
+
+    /* Store the real data */
+    node.dataset.realName = person.name;
+    node.dataset.realRelation = person.relation;
+    node.dataset.revealed = "false";
+
+    node.addEventListener("click", () => handleCardClick(node, person));
     peopleGrid.appendChild(node);
   });
+}
+
+function handleCardClick(card, person) {
+  /* First click → reveal the name & relation */
+  if (card.dataset.revealed === "false") {
+    card.dataset.revealed = "true";
+    card.classList.add("is-revealed");
+
+    const nameEl = card.querySelector(".person-name");
+    const relEl = card.querySelector(".person-relation");
+
+    /* Brief "flip" animation then swap content */
+    card.classList.add("is-flipping");
+    setTimeout(() => {
+      nameEl.textContent = person.name;
+      relEl.textContent = person.relation;
+      card.classList.remove("is-flipping");
+    }, 300);
+
+    burstConfetti(18);
+    return;
+  }
+
+  /* Second click → open the video modal */
+  openModal(person);
 }
 
 function openModal(person) {
